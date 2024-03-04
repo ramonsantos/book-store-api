@@ -1,0 +1,44 @@
+require:
+  - rubocop-factory_bot
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-thread_safety
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+  TargetRubyVersion: 3.3
+  SuggestExtensions: false
+
+Layout/HashAlignment:
+  Enabled: true
+  AllowMultipleStyles: true
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
+Layout/LineLength:
+  Enabled: false
+
+Style/ArgumentsForwarding:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantConstantBase:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
