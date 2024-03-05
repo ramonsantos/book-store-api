@@ -10,7 +10,7 @@ gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 
 group :development, :test do
-  nil
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
 end
 
 group :development do
@@ -19,5 +19,13 @@ group :development do
   gem 'rubocop-performance', '~> 1.20', '>= 1.20.2'
   gem 'rubocop-rails', '~> 2.24'
   gem 'rubocop-rake', '~> 0.6.0'
+  gem 'rubocop-rspec', '~> 2.27', '>= 2.27.1'
   gem 'rubocop-thread_safety', '~> 0.5.1'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+  gem 'shoulda-matchers', '~> 6.1'
+  gem 'simplecov', '0.17.1'
 end
