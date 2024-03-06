@@ -80,6 +80,8 @@ GEM
     bigdecimal (3.1.6)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    brakeman (6.1.2)
+      racc
     builder (3.2.4)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
@@ -280,6 +282,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  brakeman (~> 6.1, >= 6.1.2)
   database_cleaner (~> 2.0, >= 2.0.2)
   factory_bot_rails (~> 6.4, >= 6.4.3)
   pg (~> 1.1)

@@ -14,6 +14,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'brakeman', '~> 6.1', '>= 6.1.2'
   gem 'rubocop', '~> 1.61'
   gem 'rubocop-factory_bot', '~> 2.25', '>= 2.25.1'
   gem 'rubocop-performance', '~> 1.20', '>= 1.20.2'
