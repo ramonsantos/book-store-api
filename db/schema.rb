@@ -10,14 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_185923) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_06_210858) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "authors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", limit: 80
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "books", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", limit: 120
+    t.text "description"
+    t.float "price"
+    t.string "cover_url", limit: 120
+    t.string "isbn", limit: 13
+    t.hstore "details"
+    t.uuid "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["isbn"], name: "index_books_on_isbn", unique: true
+    t.index ["name"], name: "index_books_on_name"
   end
 
   create_table "categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -29,4 +45,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_185923) do
     t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
+  add_foreign_key "books", "categories"
 end

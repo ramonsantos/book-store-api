@@ -18,4 +18,7 @@ if Rails.env.development?
   FactoryBot.create(:author, name: 'Abraham Silberschatz')
   FactoryBot.create(:author, name: 'Henry Korth')
   FactoryBot.create(:author, name: 'Shashank Sudarshan')
+
+  FactoryBot.create(:the_fall_of_berlin)
+  FactoryBot.create(:database_system_concepts)
 end

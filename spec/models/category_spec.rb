@@ -3,6 +3,12 @@
 require 'rails_helper'
 
 describe Category do
+  describe 'associations' do
+    context 'when have_many' do
+      it { is_expected.to have_many(:books).dependent(:restrict_with_exception) }
+    end
+  end
+
   describe 'validations' do
     context 'when presence_of' do
       it { is_expected.to validate_presence_of(:name) }
