@@ -3,10 +3,14 @@
 class Book < ApplicationRecord
   belongs_to :category
 
+  has_many :author_books, dependent: :restrict_with_exception
+  has_many :authors, through: :author_books
+
   validates :name,        presence: true
   validates :description, presence: true
   validates :price,       presence: true
   validates :cover_url,   presence: true
+  validates :authors,     presence: true
   validates :details,     presence: false
 
   validates :isbn,        presence: true,
