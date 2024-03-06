@@ -13,4 +13,9 @@
 if Rails.env.development?
   FactoryBot.create(:computer_science_category)
   FactoryBot.create(:history_category)
+
+  FactoryBot.create(:author)
+  FactoryBot.create(:author, name: 'Abraham Silberschatz')
+  FactoryBot.create(:author, name: 'Henry Korth')
+  FactoryBot.create(:author, name: 'Shashank Sudarshan')
 end
