@@ -23,17 +23,43 @@ Layout/HashAlignment:
     - key
     - table
 
-Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
-
 Layout/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Naming/VariableNumber:
   Enabled: false
 
 Style/ArgumentsForwarding:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
 Style/Documentation:
   Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  Exclude:
+    - config/routes.rb
+  IncludedMacros:
+    - post
+    - get
+    - put
+    - patch
+    - delete
+  AllowedMethods:
+    - prepend
+    - include
+    - to
+    - not_to
+    - describe
 
 Style/RedundantConstantBase:
   Enabled: false
@@ -42,4 +68,30 @@ Style/SymbolArray:
   Enabled: false
 
 Style/WordArray:
+  Enabled: false
+
+# Rubocop RSpec
+RSpec/ContextWording:
+  Exclude:
+  - spec/support/shared_context/*
+  Prefixes:
+    - associations
+    - validations
+    - when
+    - with
+    - without
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
   Enabled: false

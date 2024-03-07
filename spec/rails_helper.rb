@@ -14,7 +14,7 @@ require 'rspec/rails'
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
-  abort e.to_s.strip
+  abort(e.to_s.strip)
 end
 
 RSpec.configure do |config|
@@ -25,8 +25,8 @@ RSpec.configure do |config|
   # Shoulda Matchers
   Shoulda::Matchers.configure do |sm_config|
     sm_config.integrate do |with|
-      with.test_framework :rspec
-      with.library :rails
+      with.test_framework(:rspec)
+      with.library(:rails)
     end
   end
 
