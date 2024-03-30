@@ -4,7 +4,6 @@ services:
   database:
     image: postgres:alpine
     container_name: book_store_api_db
-    restart: unless-stopped
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "1234"
@@ -13,6 +12,19 @@ services:
       - "5432:5432"
     volumes:
       - database:/data/postgres
+    networks:
+      - services-network
+  api:
+    depends_on:
+      - database
+    build: .
+    command: bin/rails s --binding 0.0.0.0
+    ports:
+    - "3000:3000"
+    volumes:
+    - .:/application
+    stdin_open: true
+    tty: true
     networks:
       - services-network
 networks:
