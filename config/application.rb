@@ -21,6 +21,8 @@ class BookStoreApi::Application < Rails::Application
   config.api_only = true
   config.autoload_lib(ignore: ['assets', 'tasks'])
 
+  config.active_storage.draw_routes = false
+
   # Test files generator
   config.generators do |generator|
     generator.test_framework(
