@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 ruby '3.3.1'
 
 gem 'bootsnap', require: false
+gem 'devise', '~> 4.9', '>= 4.9.4'
+gem 'devise-jwt', '~> 0.11.0'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 gem 'rack-cors', '~> 2.0', '>= 2.0.2'
