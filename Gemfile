@@ -14,7 +14,10 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 gem 'versionist', '~> 2.0', '>= 2.0.1'
 
 group :development, :test do
+  gem 'amazing_print'
   gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -26,6 +29,7 @@ group :development do
   gem 'rubocop-rake', '~> 0.6.0'
   gem 'rubocop-rspec', '~> 2.27', '>= 2.27.1'
   gem 'rubocop-thread_safety', '~> 0.5.1'
+  gem 'ruby-lsp', '~> 0.16.6'
 end
 
 group :test do
