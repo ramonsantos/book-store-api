@@ -15,6 +15,19 @@ services:
       - database:/data/postgres
     networks:
       - services-network
+  api_docs:
+    image: swaggerapi/swagger-ui
+    restart: unless-stopped
+    ports:
+      - 3001:8080
+    volumes:
+      - ./:/usr/share/nginx/html/docs/
+    environment:
+      - "URLS_PRIMARY_NAME=Book Store"
+      - "URLS=[
+          {url: '/docs/docs/store-api.yaml', name: 'Store API'},
+          {url: '/docs/docs/admin-api.yaml', name: 'Admin API'},
+        ]"
 networks:
   services-network:
     driver: bridge
