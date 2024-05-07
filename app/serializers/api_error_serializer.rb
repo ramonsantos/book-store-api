@@ -30,13 +30,13 @@ class ApiErrorSerializer
   def record_invalid
     record.errors.errors.map! do |error|
       if error.message == 'must exist'
-        type = :not_exist
+        # type = :not_exist
 
-        {
-          title:  I18n.t("api_error.record_invalid.#{type}.title"),
-          detail: build_detail(error.attribute.to_s.camelize, error, type),
-          code:   I18n.t("api_error.record_invalid.#{type}.code")
-        }
+        # {
+        #   title:  I18n.t("api_error.record_invalid.#{type}.title"),
+        #   detail: build_detail(error.attribute.to_s.camelize, error, type),
+        #   code:   I18n.t("api_error.record_invalid.#{type}.code")
+        # }
       else
         {
           title:  I18n.t("api_error.record_invalid.#{error.type}.title"),
