@@ -20,5 +20,9 @@ Rails.application.routes.draw do
         delete :sign_out, to: 'sessions#destroy', as: :admin_sign_out
       end
     end
+
+    namespace :admin do
+      resources :admins, only: [:destroy]
+    end
   end
 end
