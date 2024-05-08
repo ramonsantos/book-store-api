@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'DELETE /sign_out' do
-  let!(:admin) { create(:admin) }
+  let(:admin) { create(:admin) }
 
   let(:jwt_token) do
     admin
