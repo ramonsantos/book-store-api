@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  include Pundit::Authorization
+
   rescue_from ActiveRecord::RecordInvalid,        with: :render_invalid_error
   rescue_from ActionController::ParameterMissing, with: :render_parameter_missing_error
 
