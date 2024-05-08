@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Ebook Store API
-  description: Ebook Store API
+  title: Admin Ebook Store API
+  description: Admin Ebook Store API
   version: 1.0.0
 tags:
   - name: authorization
@@ -10,30 +10,7 @@ servers:
   - url: localhost:3000/
     description: Development server
 paths:
-  /sign_up:
-    post:
-      tags:
-       - authorization
-      summary: Sign Up
-      description: Sign Up.
-      operationId: signUp
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SignUpRequest'
-      responses:
-        201:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SignUpResponse'
-        400:
-          description: Bab Request
-        422:
-          description: UnprocessableEntity
-  /sign_in:
+  /admin/sign_in:
     post:
       tags:
        - authorization
@@ -56,7 +33,7 @@ paths:
           description: Bab Request
         401:
           description: Unauthorized
-  /sign_out:
+  /admin/sign_out:
     delete:
       security:
         - Authorization: []
@@ -75,50 +52,20 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    SignUpRequest:
-      type: object
-      required:
-        - email
-        - password
-      properties:
-        email:
-          type: string
-          description: Info message
-        password:
-          type: string
-          description: Info message
-      example:
-        email: user.test@gmail.com
-        password: "123456"
-    SignUpResponse:
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            info:
-              type: string
-              description: Success message
-        data:
-          type: object
-      example:
-        data: null
-        meta:
-          info: "User created with success."
     SignInRequest:
       type: object
       properties:
-        user:
+        admin:
           type: object
           properties:
             email:
               type: string
-              description: User email
+              description: Admin user email
             password:
               type: string
-              description: User password
+              description: Admin user password
       example:
-        user:
+        admin:
           email: user.test@gmail.com
           password: "123456"
     SignInResponse:

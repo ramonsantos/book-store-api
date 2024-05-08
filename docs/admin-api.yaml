@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Admin Ebook Store API
-  description: Admin Ebook Store API
+  title: Ebook Store API
+  description: Ebook Store API
   version: 1.0.0
 tags:
   - name: authorization
@@ -52,6 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignInResponse'
+        400:
+          description: Bab Request
         401:
           description: Unauthorized
   /sign_out:
@@ -75,36 +77,34 @@ components:
   schemas:
     SignUpRequest:
       type: object
+      required:
+        - email
+        - password
       properties:
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              description: Type of entity
-            attributes:
-              type: object
-              properties:
-                email:
-                  type: string
-                  description: User email
-                password:
-                  type: string
-                  description: User password
-      example:
-        data:
-            type: user
-            attributes:
-              email: user.test@gmail.com
-              password: "123456"
-    SignUpResponse:
-      type: object
-      properties:
-        info:
+        email:
+          type: string
+          description: Info message
+        password:
           type: string
           description: Info message
       example:
-        info: User created with success.
+        email: user.test@gmail.com
+        password: "123456"
+    SignUpResponse:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            info:
+              type: string
+              description: Success message
+        data:
+          type: object
+      example:
+        data: null
+        meta:
+          info: "User created with success."
     SignInRequest:
       type: object
       properties:
@@ -124,8 +124,15 @@ components:
     SignInResponse:
       type: object
       properties:
-        token:
-          type: string
+        data:
+          type: object
+          properties:
+            token:
+              type: string
+        meta:
+          type: object
           description: JTW token
       example:
-        info: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIzODk5ODQyLCJleHAiOjE2MjM5MDM0NDIsImp0aSI6IjcxMzZhNzRhLTBjZTktNDIyMy1hMzFjLWU3NDhhZmU0MGUzNCJ9.oP9Ho5FZ44TeCT6687pDhBmUL-bWhHxCOuvd45_OJsg
+        data:
+          token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIzODk5ODQyLCJleHAiOjE2MjM5MDM0NDIsImp0aSI6IjcxMzZhNzRhLTBjZTktNDIyMy1hMzFjLWU3NDhhZmU0MGUzNCJ9.oP9Ho5FZ44TeCT6687pDhBmUL-bWhHxCOuvd45_OJsg
+        meta: {}
