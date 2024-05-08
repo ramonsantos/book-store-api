@@ -2,16 +2,16 @@
 
 require 'rails_helper'
 
-describe 'POST /sign_in' do
+describe 'POST /admin/sign_in' do
   before do
-    create(:user)
-    post(sign_in_path, headers: base_headers, params: params.to_json)
+    create(:admin)
+    post(admin_sign_in_path, headers: base_headers, params: params.to_json)
   end
 
   context 'when correct credentials' do
     let(:params) do
       {
-        user: { email: 'user.test@gmail.com', password: '123456' }
+        admin: { email: 'user.test@gmail.com', password: '123456' }
       }
     end
 

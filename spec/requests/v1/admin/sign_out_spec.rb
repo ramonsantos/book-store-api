@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 describe 'DELETE /sign_out' do
-  let(:user) { create(:user) }
+  let(:admin) { create(:admin) }
 
   let(:jwt_token) do
-    user
-    post(sign_in_path, headers: base_headers, params: { user: attributes_for(:user) }.to_json)
+    admin
+    post(admin_sign_in_path, headers: base_headers, params: { admin: attributes_for(:admin) }.to_json)
     response.parsed_body[:data][:token]
   end
 

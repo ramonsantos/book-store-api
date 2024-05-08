@@ -320,8 +320,8 @@ Devise.setup do |config|
     dev_devise_secret_key = '8a22e9bde534995fb6242e1957d20e136c9b4c8e9b714e7ba30fc86498c7bacd131af36902e092c8f6bad3b0693c2e64f718ca3e57f8024d347ab70b08f69a88'
     jwt.secret = Rails.env.production? ? ENV.fetch('DEVISE_SECRET_KEY', nil) : dev_devise_secret_key
 
-    jwt.dispatch_requests = [['POST', %r{^/sign_in$}]]
-    jwt.revocation_requests = [['DELETE', %r{^/sign_out$}]]
+    jwt.dispatch_requests = [['POST', %r{^/admin/sign_in$}], ['POST', %r{^/sign_in$}]]
+    jwt.revocation_requests = [['DELETE', %r{^/admin/sign_out$}], ['DELETE', %r{^/sign_out$}]]
     jwt.expiration_time = 60.minutes.to_i
   end
 end
