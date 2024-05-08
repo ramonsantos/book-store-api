@@ -11,7 +11,7 @@ class ApiErrorSerializer
   def serialize(method)
     {
       errors: send(method),
-      meta: nil
+      meta: {}
     }
   end
 

@@ -33,39 +33,41 @@ paths:
           description: Bab Request
         422:
           description: UnprocessableEntity
-  # /sign_in:
-  #   post:
-  #     tags:
-  #      - authorization
-  #     summary: Sign In
-  #     description: Sign In.
-  #     operationId: signIn
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/SignInRequest'
-  #     responses:
-  #       201:
-  #         description: OK
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/SignInResponse'
-  #       401:
-  #         description: Unauthorized
-  # /sign_out:
-  #   delete:
-  #     security:
-  #       - Authorization: []
-  #     tags:
-  #      - authorization
-  #     summary: Sign Out
-  #     description: Sign Out.
-  #     operationId: signOut
-  #     responses:
-  #       204:
-  #         description: NoContent
+  /sign_in:
+    post:
+      tags:
+       - authorization
+      summary: Sign In
+      description: Sign In.
+      operationId: signIn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInRequest'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResponse'
+        400:
+          description: Bab Request
+        401:
+          description: Unauthorized
+  /sign_out:
+    delete:
+      security:
+        - Authorization: []
+      tags:
+       - authorization
+      summary: Sign Out
+      description: Sign Out.
+      operationId: signOut
+      responses:
+        204:
+          description: NoContent
 components:
   securitySchemes:
     Authorization:
@@ -103,35 +105,34 @@ components:
         data: null
         meta:
           info: "User created with success."
-    # SignUpResponse:
-    #   type: object
-    #   properties:
-    #     info:
-    #       type: string
-    #       description: Info message
-    #   example:
-    #     info: User created with success.
-    # SignInRequest:
-    #   type: object
-    #   properties:
-    #     user:
-    #       type: object
-    #       properties:
-    #         email:
-    #           type: string
-    #           description: User email
-    #         password:
-    #           type: string
-    #           description: User password
-    #   example:
-    #     user:
-    #       email: user.test@gmail.com
-    #       password: "123456"
-    # SignInResponse:
-    #   type: object
-    #   properties:
-    #     token:
-    #       type: string
-    #       description: JTW token
-    #   example:
-    #     info: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIzODk5ODQyLCJleHAiOjE2MjM5MDM0NDIsImp0aSI6IjcxMzZhNzRhLTBjZTktNDIyMy1hMzFjLWU3NDhhZmU0MGUzNCJ9.oP9Ho5FZ44TeCT6687pDhBmUL-bWhHxCOuvd45_OJsg
+    SignInRequest:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            email:
+              type: string
+              description: User email
+            password:
+              type: string
+              description: User password
+      example:
+        user:
+          email: user.test@gmail.com
+          password: "123456"
+    SignInResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            token:
+              type: string
+        meta:
+          type: object
+          description: JTW token
+      example:
+        data:
+          token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIzODk5ODQyLCJleHAiOjE2MjM5MDM0NDIsImp0aSI6IjcxMzZhNzRhLTBjZTktNDIyMy1hMzFjLWU3NDhhZmU0MGUzNCJ9.oP9Ho5FZ44TeCT6687pDhBmUL-bWhHxCOuvd45_OJsg
+        meta: {}

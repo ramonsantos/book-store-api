@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     devise_for(:users, controllers: { sessions: 'v1/sessions', registrations: 'v1/registrations' }, skip: [:registrations, :sessions])
 
     devise_scope(:user) do
-      post :sign_up, to: 'registrations#create'
+      post   :sign_up,  to: 'registrations#create'
+      post   :sign_in,  to: 'sessions#create'
+      delete :sign_out, to: 'sessions#destroy'
     end
   end
 end

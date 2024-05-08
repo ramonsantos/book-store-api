@@ -38,7 +38,7 @@ describe 'POST /sign_up' do
               code: 'attribute_blank'
             }
           ],
-          meta: nil
+          meta: {}
         }
       end
 
@@ -63,7 +63,7 @@ describe 'POST /sign_up' do
                 code: 'resource_already_exists'
               }
             ],
-            meta: nil
+            meta: {}
           }
         end
 
@@ -91,7 +91,7 @@ describe 'POST /sign_up' do
                 code: 'attribute_too_short'
               }
             ],
-            meta: nil
+            meta: {}
           }
         end
 
