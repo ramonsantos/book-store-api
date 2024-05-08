@@ -21,4 +21,6 @@ if Rails.env.development?
 
   FactoryBot.create(:the_fall_of_berlin, authors: [author_1])
   FactoryBot.create(:database_system_concepts, authors: [author_2, author_3, author_4])
+
+  FactoryBot.create(:admin)
 end

@@ -11,5 +11,14 @@ Rails.application.routes.draw do
       post   :sign_in,  to: 'sessions#create'
       delete :sign_out, to: 'sessions#destroy'
     end
+
+    scope(:admin) do
+      devise_for(:admins, controllers: { sessions: 'v1/sessions', registrations: 'v1/registrations' }, skip: [:registrations, :sessions])
+
+      devise_scope(:admin) do
+        post   :sign_in,  to: 'sessions#create',  as: :admin_sign_in
+        delete :sign_out, to: 'sessions#destroy', as: :admin_sign_out
+      end
+    end
   end
 end
