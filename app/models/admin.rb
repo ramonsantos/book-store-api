@@ -7,4 +7,11 @@ class Admin < ApplicationRecord
     :jwt_authenticatable,
     jwt_revocation_strategy: JwtDenyList
   )
+
+  enum role: {
+    editor:  'editor',
+    manager: 'manager'
+  }
+
+  validates :role, presence: true
 end

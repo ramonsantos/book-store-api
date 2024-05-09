@@ -10,7 +10,7 @@ servers:
   - url: localhost:3000/
     description: Development server
 paths:
-  /admin/sign_in:
+  /sign_in:
     post:
       tags:
        - authorization
@@ -33,7 +33,7 @@ paths:
           description: Bab Request
         401:
           description: Unauthorized
-  /admin/sign_out:
+  /sign_out:
     delete:
       security:
         - Authorization: []

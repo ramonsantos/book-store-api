@@ -27,6 +27,26 @@ class ApiErrorSerializer
     ]
   end
 
+  def not_authorized
+    [
+      {
+        title: 'Not authorized',
+        detail: 'User not authorized.',
+        code: :forbidden
+      }
+    ]
+  end
+
+  def record_not_found
+    [
+      {
+        title: 'Resource not found',
+        detail: "The #{error.model} '#{options[:identifier]}' is not found",
+        code: :resource_not_found
+      }
+    ]
+  end
+
   def record_invalid
     record.errors.errors.map! do |error|
       if error.message == 'must exist'

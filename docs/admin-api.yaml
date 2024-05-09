@@ -10,7 +10,7 @@ servers:
   - url: localhost:3000/
     description: Development server
 paths:
-  /sign_up:
+  /admin/sign_up:
     post:
       tags:
        - authorization
@@ -33,7 +33,7 @@ paths:
           description: Bab Request
         422:
           description: UnprocessableEntity
-  /sign_in:
+  /admin/sign_in:
     post:
       tags:
        - authorization
@@ -56,7 +56,7 @@ paths:
           description: Bab Request
         401:
           description: Unauthorized
-  /sign_out:
+  /admin/sign_out:
     delete:
       security:
         - Authorization: []
@@ -68,6 +68,24 @@ paths:
       responses:
         204:
           description: NoContent
+  /admin/admins/:id:
+    delete:
+      security:
+        - Authorization: []
+      tags:
+       - authorization
+      summary: Remove Admin User
+      description: Remove Admin User.
+      operationId: removeAdminUser
+      responses:
+        204:
+          description: NoContent
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: NotFound
 components:
   securitySchemes:
     Authorization:
