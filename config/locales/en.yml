@@ -9,3 +9,19 @@ en:
         title: Attribute too short
         detail: The attribute '%{attribute}' is too short (minimum is %{count} characters)
         code: attribute_too_short
+      not_exist:
+        title: Resource does not exist
+        detail: The %{entity} does not exist
+        code: resource_does_not_exist
+      blank:
+        title: Attribute is required
+        detail: The attribute '%{attribute}' can't be blank
+        code: attribute_blank
+      wrong_length:
+        title: Attribute with the wrong length
+        detail: The attribute '%{attribute}' is the wrong length (should be %{count} characters)
+        code: wrong_length_attribute
+      not_a_number:
+        title: Attribute is not a number
+        detail: The attribute '%{attribute}' is not a number
+        code: attribute_is_not_a_number

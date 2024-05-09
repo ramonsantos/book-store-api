@@ -41,4 +41,9 @@ RSpec.configure do |config|
 
   # FactoryBot
   config.include FactoryBot::Syntax::Methods
+
+  # Timecop
+  config.after do
+    Timecop.return
+  end
 end

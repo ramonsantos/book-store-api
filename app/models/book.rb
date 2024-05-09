@@ -12,6 +12,7 @@ class Book < ApplicationRecord
   validates :cover_url,   presence: true
   validates :authors,     presence: true
   validates :details,     presence: false
+  validates :slug,        presence: true, uniqueness: { case_sensitive: true }
 
   validates :isbn,        presence: true,
                           uniqueness: { case_sensitive: false },
