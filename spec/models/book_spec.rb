@@ -18,6 +18,7 @@ RSpec.describe Book do
         it { is_expected.to validate_presence_of(:isbn) }
         it { is_expected.to validate_presence_of(:cover_url) }
         it { is_expected.to validate_presence_of(:authors) }
+        it { is_expected.to validate_presence_of(:slug) }
       end
 
       context 'when false' do
@@ -28,6 +29,7 @@ RSpec.describe Book do
     context 'when uniqueness_of' do
       subject { create(:book) }
 
+      it { is_expected.to validate_uniqueness_of(:slug) }
       it { is_expected.to validate_uniqueness_of(:isbn).case_insensitive }
     end
 

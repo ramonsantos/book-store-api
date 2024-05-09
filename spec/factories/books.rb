@@ -9,6 +9,7 @@ FactoryBot.define do
     price { 59.99 }
     cover_url { 'https://m.media-amazon.com/images/I/91PUjmVo3kL._SY466_.jpg' }
     isbn { '9780345215802' }
+    slug { 'the-fall-of-berlin' }
 
     details do
       {
@@ -33,6 +34,7 @@ FactoryBot.define do
       price { 106.5 }
       cover_url { 'https://m.media-amazon.com/images/I/61aEyYvsBmL._SY466_.jpg' }
       isbn { '9781260084504' }
+      slug { 'database-system-concepts' }
 
       details do
         {
