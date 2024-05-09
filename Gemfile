@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.1'
 
+gem 'active_model_serializers', '~> 0.10.14'
 gem 'bootsnap', require: false
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'devise-jwt', '~> 0.11.0'
@@ -38,4 +39,5 @@ group :test do
   gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
   gem 'shoulda-matchers', '~> 6.1'
   gem 'simplecov', '0.17.1'
+  gem 'timecop', '~> 0.9.8'
 end

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'DELETE /admin/admins/:isbn' do
+describe 'DELETE /admin/admins/:id' do
   let!(:admin_edit) { create(:admin) }
   let!(:admin_manager) { create(:manager) }
 

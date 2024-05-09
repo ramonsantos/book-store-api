@@ -6,6 +6,10 @@ info:
 tags:
   - name: authorization
     description: Authorization of API
+  - name: admins
+    description: Admins
+  - name: books
+    description: Books
 servers:
   - url: localhost:3000/
     description: Development server
@@ -73,7 +77,7 @@ paths:
       security:
         - Authorization: []
       tags:
-       - authorization
+       - admins
       summary: Remove Admin User
       description: Remove Admin User.
       operationId: removeAdminUser
@@ -86,6 +90,31 @@ paths:
           description: Forbidden
         404:
           description: NotFound
+  /admin/books:
+    post:
+      security:
+        - Authorization: []
+      tags:
+       - books
+      summary: Create book
+      description: Create book.
+      operationId: createBopok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBook'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        401:
+          description: Unauthorized
+        422:
+          description: UnprocessableEntity
 components:
   securitySchemes:
     Authorization:
@@ -154,3 +183,107 @@ components:
         data:
           token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIzODk5ODQyLCJleHAiOjE2MjM5MDM0NDIsImp0aSI6IjcxMzZhNzRhLTBjZTktNDIyMy1hMzFjLWU3NDhhZmU0MGUzNCJ9.oP9Ho5FZ44TeCT6687pDhBmUL-bWhHxCOuvd45_OJsg
         meta: {}
+    CreateBook:
+      type: object
+      properties:
+        book:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of book
+            price:
+              type: number
+              description: Price of book
+            description:
+              type: string
+              description: Description of book
+            cover_url:
+              type: string
+              description: Book cover URL
+            slug:
+              type: string
+              description: Slug of book
+            isbn:
+              type: string
+              description: ISBN of book
+            details:
+              type: object
+              description: Details of book (Hash content)
+            category_id:
+              type: string
+              description: Category Id
+            author_ids:
+              type: array
+              description: Ids of authors
+              items:
+                type: string
+                description: Author Id
+      example:
+        book:
+          name: "Rails API"
+          price: 16.5
+          description: "Developing a REST API in Rails on Rails"
+          cover_url: "https://example.com/cover.jpg"
+          slug: "rails-api"
+          isbn: "1234567890323"
+          details:
+            edition: "1"
+            year: 2121
+          category_id: "5fead211-d89c-4448-8ca7-09af3f038c55"
+          author_ids: ["5fead211-d89c-4448-8ca7-09af3f038c55"]
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Dd of book
+        name:
+          type: string
+          description: Name of book
+        price:
+          type: number
+          description: Price of book
+        description:
+          type: string
+          description: Description of book
+        cover_url:
+          type: string
+          description: Book cover URL
+        slug:
+          type: string
+          description: Slug of book
+        isbn:
+          type: string
+          description: ISBN of book
+        details:
+          type: object
+          description: Details of book (Hash content)
+        category_id:
+          type: string
+          description: Category Id
+        author_ids:
+          type: array
+          description: Ids of authors
+          items:
+            type: string
+            description: Author Id
+        created_at:
+          type: string
+          format: date-time
+          description: Datetime of creation
+      example:
+        book:
+          id: "5fead211-d89c-4448-8ca7-09af3f038c55"
+          name: "Rails API"
+          price: 16.5
+          description: "Developing a REST API in Rails on Rails"
+          cover_url: "https://example.com/cover.jpg"
+          slug: "rails-api"
+          isbn: "1234567890323"
+          details:
+            edition: "1"
+            year: 2121
+          category_id: "5fead211-d89c-4448-8ca7-09af3f038c55"
+          author_ids: ["5fead211-d89c-4448-8ca7-09af3f038c55"]
+          created_at: "2024-05-09T18:45:10.493Z"
