@@ -2,18 +2,15 @@ version: "3.9"
 
 services:
   database:
-    image: postgres:alpine
-    container_name: book_store_api_db
+    image: postgres:bullseye
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "1234"
+      POSTGRES_PASSWORD: 1234
       PGDATA: /data/postgres
     ports:
       - "5432:5432"
     volumes:
       - database:/data/postgres
-    networks:
-      - services-network
   api:
     depends_on:
       - database
@@ -21,12 +18,12 @@ services:
     command: bin/rails s --binding 0.0.0.0
     ports:
     - "3000:3000"
+    environment:
+      DATABASE_HOST: "database"
     volumes:
-    - .:/application
+    - .:/rails
     stdin_open: true
     tty: true
-    networks:
-      - services-network
   api_docs:
     image: swaggerapi/swagger-ui
     restart: unless-stopped
@@ -40,8 +37,5 @@ services:
           {url: '/docs/docs/store-api.yaml', name: 'Store API'},
           {url: '/docs/docs/admin-api.yaml', name: 'Admin API'},
         ]"
-networks:
-  services-network:
-    driver: bridge
 volumes:
   database:
